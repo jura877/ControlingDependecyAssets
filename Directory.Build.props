@@ -1,0 +1,26 @@
+<Project>
+  <PropertyGroup>
+    <Version>4.0.0.0</Version>
+    <FileVersion>4.0.0.0</FileVersion>
+    <PackageVersion>4.0.0</PackageVersion>
+
+    <Company>Agitavit d.o.o.</Company>
+    <Authors>Agitavit. d.o.o.</Authors>
+    <Copyright>Copyright © 2017, 2018, 2019, 2020, 2021</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <InformationalVersion>$(PackageVersion)</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+
+    <DocumentationFile>bin\$(MSBuildProjectName).xml</DocumentationFile>
+    <LangVersion>10.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+
+  <Target Name="InitializeSourceControlInformation" BeforeTargets="InitializeSourceControlInformation">
+    <Exec Command="git describe --long --always --dirty --exclude=* --abbrev=8" ConsoleToMSBuild="True" IgnoreExitCode="False">
+      <Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput"/>
+    </Exec>
+  </Target>
+</Project>
